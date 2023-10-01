@@ -1,0 +1,2 @@
+class ContaPoupança():
+    pass

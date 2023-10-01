@@ -1,0 +1,2 @@
+from minicurso import MiniCurso
+
