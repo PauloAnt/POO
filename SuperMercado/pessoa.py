@@ -1,5 +1,6 @@
 class Pessoa():
     def __init__(self, nome:str, qnt_dinheiro:float):
+        assert type(qnt_dinheiro) == float or type(qnt_dinheiro) == int and qnt_dinheiro > 0, "O dinheiro deve ser um número e maior que 0."
         self.__nome = nome
         self.__qnt_dinheiro = qnt_dinheiro
 

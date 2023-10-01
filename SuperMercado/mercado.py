@@ -12,6 +12,7 @@ class Mercado():
     
     @classmethod
     def addProduto(cls, produto: Produto):
+        assert type(produto) == Produto, "O produto deve ser criado com a classe Produto. Ex: tomate = Produto('Tomate', 10.00, 100)"
         chave = produto.nome
         if chave not in cls.estoque:
             cls.estoque[chave] = {
@@ -22,6 +23,7 @@ class Mercado():
     
     @classmethod
     def comprarProduto(cls, pessoa: Pessoa, produto:Produto):
+        assert type(produto) != Produto or type(pessoa) != Pessoa, "A pessoa deve ser criado com a classe Pessoa e o produto deve ser criado com a classe Produto."
         nome = produto.nome
         if cls.estoque[nome]["Valor"] > 0 and pessoa.qnt_dinheiro > cls.estoque[nome]["Valor"]:
             cls.estoque[nome]["Quantidade"] -= 1 
