@@ -1,2 +1,2 @@
 # POO
-Programação Orientada a Objetos e Estrutura de Dados
+Programação Orientada a Objetos utilizando Python
