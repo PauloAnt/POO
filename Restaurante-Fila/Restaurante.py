@@ -1,4 +1,5 @@
 from Fila import Fila, FilaException
+from Pedido import Pedido
 
 class RestauranteException(Exception):
     def __init__(self, mensagem):
@@ -22,6 +23,18 @@ class Restaurante():
 
     #Recebe pedido e o nome, tira o cliente da fila de espera e coloca na fila de preparo
     def realizarPedido(self, nome:str, pedido:object):
+        '''
+        Método que confirma a realização de um pedido feito pelo cliente.
+        Ao final, insere o pedido confirmado na fila de preparo
+        Argumentos
+        ------------
+        nome (str): xxxxxx
+        pedido (str): yyyyyy
+
+        Exceçoes
+        -----------
+        RestauranteException: x  xxxxx
+        '''
         if (self.__espera.estaVazia() or self.__espera.estaCheia()):
             raise RestauranteException("A fila deve está vázia ou cheia / O pedido e o contaCliente devem ser str!")
         else:

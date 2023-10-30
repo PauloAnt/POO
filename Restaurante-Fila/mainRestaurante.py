@@ -30,11 +30,11 @@ Fila de entrega: {r1.entregar}
         elif (resposta == "c"):
             nome = input("Informe seu nome: ")
             comida = input("Faça seu pedido: ")
-            if (type(comida) != str or (type(nome) != str)):
-                raise RestauranteException("O nome e o pedido devem ser do tipo str!")
-            else:
-                pedido = Pedido(comida)
-                print(r1.realizarPedido(nome, pedido))
+            # if (type(comida) != str or (type(nome) != str)):
+            #     raise RestauranteException("O nome e o pedido devem ser do tipo str!")
+            # else:
+            pedido = Pedido(comida)
+            print(r1.realizarPedido(nome, pedido))
         elif (resposta == "i"):
             print(r1.preparoRefeicao())
         elif (resposta == "s"):
