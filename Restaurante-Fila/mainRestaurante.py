@@ -20,7 +20,7 @@ while True:
 =============================================
 Fila de espera: {r1.espera}
 Fila de preparo: {r1.preparo}
-Fila de entrega: {r1.entregar}
+Fila de entrega: {r1.entrega}
 ''')
         resposta = input("Opção: ").lower()
 
@@ -39,24 +39,26 @@ Fila de entrega: {r1.entregar}
                 pedido = Pedido(nome, comida)
                 r1.realizarPedido(pedido)
                 print("Pedido realizado com sucesso!!! Vamos preparar seu prato.")
-                print(f"<< Seu pedido está na {r1.preparo.busca(pedido)}a posição na fila de preparo e deve estar pronto em {r1.preparo.tamanho()*20} min >>")
+                print(f"<< Seu pedido está na {r1.preparo.busca(pedido)}a posição na fila de preparo e deve estar pronto em {r1.preparo.__len__()*20} min >>")
             else:
                 print(f"Pedido não confirmado, descartando...")
+                r1.espera.desenfileirar()
 
         elif (resposta == "i"):
-            first_pedido = r1.preparo.elemento(1)
+            first_pedido = r1.pegarPedidoEspera()
             print(f"Pedido da vez: {first_pedido.pedido}")
             print(f"Cliente: Sr(a) {first_pedido.nome}:")
             conf = input("Pedido já está pronto para entrega (S/N)? ").upper()
-            if (conf == "S"):        
-                r1.preparoRefeicao()
-                print(f"<< Seu pedido está na {r1.entrega.busca(1)}a posição para entrega. É rápido, temos vários entregadores>>")
-                print(f"<< Total de Pedidos pendente: {r1.entrega.tamanho()} >>")
+            if (conf == "S"):
+                r1.preparoRefeicao(first_pedido)
+                print(f"<< Seu pedido está na {r1.entrega.busca(pedido)}a posição para entrega. É rápido, temos vários entregadores>>")
+                print(f"<< Total de Pedidos pendente: {r1.entrega.__len__()} >>")
             else:
                 print(f"Pedido não confirmado, descartando...")
+                
         elif (resposta == "s"):
-            print(f"Pedido do(a) Sr(a) {r1.entrega.busca(1)} saindo para entrega!!!")
-            r1.entregarPedido()
+            first_pedido = r1.entregarPedido()
+            print(f"Pedido do(a) Sr(a) {first_pedido.nome} saindo para entrega!!!")
         elif (resposta == "q"):
             print("Encerrando programa...")
             break

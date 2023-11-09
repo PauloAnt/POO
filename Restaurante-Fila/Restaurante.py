@@ -23,28 +23,32 @@ class Restaurante():
     #Recebe pedido e o nome, tira o cliente da fila de espera e coloca na fila de preparo
     def realizarPedido(self, pedido:object):
         self.__espera.desenfileirar()
-        self.__preparo.enfileirar((pedido.__str__()))
+        self.__preparo.enfileirar(pedido)
         return True
             
     @property
     def espera(self):
         return self.__espera
 
-    #Tira o cliente da fila de preparo e coloca na fila de entrega
-    def preparoRefeicao(self):
+    #Pega o pedido da fila de espera
+    def pegarPedidoEspera(self):
         pedido = self.__preparo.desenfileirar()
-        self.__entrega.enfileirar(pedido.__str__())
+        return pedido
+    
+    #Adiciona o pedido a fila de entrega
+    def preparoRefeicao(self, pedido):
+        self.__entrega.enfileirar(pedido)
         return True
-        
+    
     @property
     def preparo(self):
         return self.__preparo
     
     #Entrega o pedido e tira ele da fila de entrega
     def entregarPedido(self):
-        self.__entrega.desenfileirar()
-        return True
+        pedido = self.__entrega.desenfileirar()
+        return pedido
         
     @property
-    def entregar(self):
+    def entrega(self):
         return self.__entrega
