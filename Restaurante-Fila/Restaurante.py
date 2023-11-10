@@ -31,7 +31,7 @@ class Restaurante():
         return self.__espera
 
     #Pega o pedido da fila de espera
-    def pegarPedidoEspera(self):
+    def pegarPedidoPreparo(self):
         pedido = self.__preparo.desenfileirar()
         return pedido
     
