@@ -18,9 +18,16 @@ class Pedido():
     
     @pedido.setter
     def pedido(self, novoPedido)->str:
+        assert type(novoPedido) == str, "O pedido deve ser composta por palavras."
         self.__pedido = novoPedido
         return self.__pedido
 
     @property
     def nome(self) -> str:
+        return self.__nome
+    
+    @nome.setter
+    def nome(self, novoNome) -> str:
+        assert type(novoNome) == str , "O nome deve ser composta por palavras."
+        self.__nome = novoNome
         return self.__nome

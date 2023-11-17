@@ -57,7 +57,7 @@ while True:
                     r1.espera.desenfileirar()
                     sleep(1)
             else:
-                raise RestauranteException("A fila está vázia!")
+                print("A fila está vázia!")
         elif (resposta == "i"):
             if (not r1.preparo.estaVazia()):
                 first_pedido = r1.pegarPedidoPreparo()
@@ -73,7 +73,7 @@ while True:
                     print(f"Pedido não confirmado, descartando...")
                     sleep(1)
             else:
-                raise RestauranteException("A fila está vázia!")
+                print("A fila está vázia!")
         elif (resposta == "r"):
             if (not r1.entrega.estaVazia()):
                 first_pedido = r1.entregarPedido()
@@ -81,7 +81,7 @@ while True:
                 print(f"{first_pedido.pedido}")
                 sleep(1)
             else:
-                raise RestauranteException("A fila está vázia!")
+                print("A fila está vázia!")
         elif (resposta == "q"):
             print("Encerrando programa...")
             sleep(1)
